@@ -15,7 +15,7 @@ export const FeedbackProvider = ({ children }) => {
 
   const fetchfeedback = async () => {
     // Feedback is a backend data proxy or http://localhost:5000/Feedback
-    const response = await fetch(`/https://cheerful-medovik-270282.netlify.app/api/Feedback`);
+    const response = await fetch(`/Feedback`);
     const datas = await response.json();
     setItemsfromfeedback(datas);
     // preorder
@@ -37,7 +37,7 @@ export const FeedbackProvider = ({ children }) => {
   };
   // edit feedback
   const updatefeedback = async (id, updateitems) => {
-    const response = await fetch(`/https://cheerful-medovik-270282.netlify.app/api/Feedback/${id}`, {
+    const response = await fetch(`/Feedback/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export const FeedbackProvider = ({ children }) => {
     // delete a feedback
     if (window.confirm("Are you want to delete a reviews")) {
       // deletation
-      await fetch(`/https://cheerful-medovik-270282.netlify.app/api/Feedback/${id}`, { method: "DELETE" });
+      await fetch(`/Feedback/${id}`, { method: "DELETE" });
 
       setItemsfromfeedback(itemsfromfeedback.filter((dlt) => dlt.id !== id));
     }
